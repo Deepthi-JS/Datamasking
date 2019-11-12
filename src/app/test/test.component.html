@@ -1,0 +1,40 @@
+<div class="dropdown my-4 ml-0">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" (click)="toggle()">
+      Select Table Name
+    </button>
+    <div class="dropdown-menu scroll" *ngIf="show" [ngClass]="{show:show}">
+      <a class="dropdown-item" *ngFor="let option of options" (click)="getTable(option)">{{option}}</a>
+    </div>
+  </div>
+    <div>   
+    <table class ="table" >
+          <thead class="thead-light">
+          <tr>
+            <th *ngFor="let column of Columns">{{column}}</th>
+          </tr>
+        </thead>
+          <tr *ngFor="let u of tableData">
+            <td *ngFor="let val of u">
+              {{val}}
+            </td>
+          </tr>
+        </table>
+  </div>
+  <style>
+      .btn-secondary {
+          background-color: #136288 !important;
+          border-color: #c3f5ff !important;
+      }
+      .table .thead-light th
+      {
+        background: #27a1b852;
+          color: #000;
+          font-weight: 400;
+          text-transform: inherit;
+          border: none;
+      }
+      .table  tr:nth-child(2n-1)
+      {
+        background: #effafb;
+      }
+      </style>

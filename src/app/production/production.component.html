@@ -1,0 +1,80 @@
+<div class="dropdown my-4 ml-0">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" (click)="toggle()">
+      Select Table Name
+    </button>
+    <div class="dropdown-menu scroll" *ngIf="show" [ngClass]="{show:show}">
+      <a class="dropdown-item" *ngFor="let option of options" (click)="getTable(option)">{{option}}</a>
+    </div> <button style="float:right;max-width:275px;" [disabled]="!movedata" class ="move col-2 btn btn-info  justify-content-end" (click)="Movedata()">Move Data to Test environment</button>
+  </div>
+  <div class="mt-5">   
+  <table class ="table" >
+        <thead class="thead-light">
+        <tr>
+          <th *ngFor="let column of Columns">{{column}}</th>
+        </tr>
+      </thead>
+        <tr *ngFor="let u of tableData">
+          <td *ngFor="let val of u">
+            {{val}}
+          </td>
+        </tr>
+      </table>
+</div>
+<div class="popup-overlay" *ngIf="success"></div>
+<div class="popup" *ngIf="success">
+  {{successmessage}}
+</div>
+
+<style>
+.btn-secondary {
+    background-color: #136288 !important;
+    border-color: #c3f5ff !important;
+}
+.table .thead-light th
+{
+  background: #27a1b852;
+    color: #000;
+    font-weight: 400;
+    text-transform: inherit;
+    border: none;
+}
+.table  tr:nth-child(2n-1)
+{
+  background: #effafb;
+}
+.table td 
+{
+  font-size: 14px;
+}
+.popup-overlay 
+{
+  position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background: rgba(0,0,0,0.5);
+}
+.popup 
+{
+  position: fixed;
+    top: 0;
+    width: 400px;
+    height: 150px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    line-height: 150px;
+    background: #27a1b7;
+    text-align: center;
+    color: #ffffff;
+    font-weight: bold;
+}
+.move:disabled
+{
+  cursor:not-allowed;
+  opacity: 0.2;
+}
+</style>
